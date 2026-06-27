@@ -1,44 +1,75 @@
-# 👋 Olá, eu sou o Fabio Coutinho
+# React + TypeScript + Vite
 
-Bem-vindo ao meu portfólio! Aqui você encontra meus projetos, estudos e habilidades como desenvolvedor web.  
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
----
+Currently, two official plugins are available:
 
-## 💼 Sobre mim
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-- Sou um desenvolvedor focado em front-end / web — trabalho com HTML, CSS e JavaScript.  
-- Gosto de construir aplicações limpas, responsivas e práticas.  
-- Estou sempre aprendendo novas tecnologias e melhorando minhas skills.  
+## React Compiler
 
----
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## 🚀 Projetos
+## Expanding the ESLint configuration
 
-| Projeto | Descrição | URL / Detalhes |
-|--------|------------|----------------|
-| Meu Portfólio Pessoal | Site pessoal que reúne meus projetos e perfil. | [Link do Portfólio](https://fabiocoutinho.vercel.app/) |
-| *(Adicionar mais projetos aqui)* | *(O que faz o projeto)* | *(URL ou breve descrição)* |
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-![](assets/img-hero.png)
-![](assets/img-phone.png)
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
----
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
-## 🛠️ Tecnologias e Skills
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 
-- **Front-End:** HTML, CSS, JavaScript  
-- **Outros:** Versionamento com Git / GitHub, noções de design responsivo, depuração de bugs, boas práticas de código.  
-- *(Adicione outras tecnologias ou ferramentas que conhecer: frameworks, bibliotecas, etc)*
+```
 
----
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-## 📂 Como rodar meus projetos localmente
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-```bash
-# Clone o repositório
-git clone https://github.com/FabioCoutinho1/FabioCoutinho.git
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 
-# Entre na pasta do projeto
-cd FabioCoutinho
-
-# Abra no navegador (index.html) ou use Live Server / similar
+```
