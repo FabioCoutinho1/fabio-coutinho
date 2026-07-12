@@ -27,7 +27,7 @@ export default function Section({
           alt={imageAlt}
           priority
           placeholder="blur"
-          className="max-w-fit"
+          className="max-w-150"
         ></Image>
       </div>
     </section>
