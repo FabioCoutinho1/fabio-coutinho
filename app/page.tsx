@@ -1,5 +1,13 @@
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Calendar, FileUser, Mail, MapPin } from "lucide-react";
+import {
+  ArrowDown,
+  ArrowLeft,
+  ArrowRight,
+  Calendar,
+  FileUser,
+  Mail,
+  MapPin,
+} from "lucide-react";
 import "./globals.css";
 import Image from "next/image";
 import Link from "next/link";
@@ -24,7 +32,8 @@ import github from "@/app/assets/svg/github.svg";
 import linkedIn from "@/app/assets/svg/linkedin.svg";
 import Stack from "@/components/stacks/Stacks";
 import Title from "@/components/typography/Title";
-import LocationAndDate from "@/components/lactionAndDate/LocationAndDate";
+import LocationAndDate from "@/components/locationAndDate/LocationAndDate";
+import CardProject from "@/components/cardProject/CardProject";
 
 export default function Home() {
   const mapStacks = [
@@ -43,7 +52,7 @@ export default function Home() {
         <div>
           <p>Olá, eu sou</p>
           <h1 className="font-bold">Fabio Coutinho</h1>
-          <p>Desenvolvedor Full Stak</p>
+          <p className="text-primary-font">Desenvolvedor Full Stak</p>
           <p>Java • Spring • React </p>
           <div className="flex gap-3.5">
             <Link href="#projects">
@@ -88,6 +97,16 @@ export default function Home() {
         imageAlt="isso e uma imagem"
       >
         <Title text="Projetos em destaque" />
+
+        <div className="w-full flex gap-4 justify-center items-center">
+          <CardProject title="GitHub Finder" />
+          <CardProject title="Gerenciador de Tarefas" />
+        </div>
+
+        <a className="flex items-center gap-2 text-primary-font" href="">
+          Ver todos os projetos
+          <ArrowRight size={18} />
+        </a>
       </Section>
       <Section id="contact" imageSrc={imgSection5} imageAlt="isso e uma imagem">
         <Title text={"Vamos conversar"} />

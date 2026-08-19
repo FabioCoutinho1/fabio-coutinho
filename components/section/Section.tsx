@@ -18,7 +18,7 @@ export default function Section({
       className="h-full w-full flex justify-between items-center"
       id={id}
     >
-      <div className="flex-1 flex flex-col items-center justify-center">
+      <div className="flex-1 flex flex-col items-center justify-center gap-5">
         {children}
       </div>
       <div className="flex-1 h-full flex items-end justify-center">
