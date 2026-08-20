@@ -5,18 +5,19 @@
 @custom-variant dark (&:is(.dark *));
 
 @layer base {
-  section {
-    height: 100dvh;
-  }
   * {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-[#050712] text-white antialiased;
   }
   html {
     @apply font-sans;
   }
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 @theme inline {

@@ -10,8 +10,8 @@ export default function LocationAndDate({
   icon: Icon,
 }: LocationAndDateProopsType) {
   return (
-    <p className="flex gap-2 bg-[#0A0F17] rounded-2xl px-2 py-1 border w-full justify-center">
-      <Icon color="#FFCD29" />
+    <p className="flex min-w-36 items-center justify-center gap-2 rounded-lg border border-white/10 bg-[#0A0F17] px-4 py-2 font-semibold">
+      <Icon className="size-5 text-[#ffcd29]" />
       <span>{text}</span>
     </p>
   );

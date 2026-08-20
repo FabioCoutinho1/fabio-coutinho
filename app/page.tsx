@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import {
   ArrowDown,
-  ArrowLeft,
   ArrowRight,
   Calendar,
   FileUser,
@@ -48,26 +47,26 @@ export default function Home() {
 
   return (
     <>
-      <Section id="hero" imageSrc={imgSection1} imageAlt="isso e uma imagem">
-        <div>
-          <p>Olá, eu sou</p>
-          <h1 className="font-bold">Fabio Coutinho</h1>
-          <p className="text-primary-font">Desenvolvedor Full Stak</p>
-          <p>Java • Spring • React </p>
-          <div className="flex gap-3.5">
+      <Section id="hero" imageSrc={imgSection1} imageAlt="Ilustração de Fabio Coutinho">
+        <div className="space-y-1">
+          <p className="text-3xl sm:text-4xl">Olá, eu sou</p>
+          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">Fabio Coutinho</h1>
+          <p className="text-2xl text-primary-font sm:text-3xl">Desenvolvedor Full Stack</p>
+          <p className="pt-1 text-lg">Java • Spring • React</p>
+        </div>
+          <div className="flex flex-wrap gap-4">
             <Link href="#projects">
-              <Button>Ver Projetos</Button>
+              <Button className="rounded-2xl bg-[#725aef] px-4 text-base hover:bg-[#6049d4]">Ver projetos</Button>
             </Link>
             <Link href="#about">
-              <Button variant={"outline"}>
-                Sobre mim <ArrowDown />{" "}
+              <Button variant="outline" className="rounded-2xl border-white bg-transparent px-4 text-base text-white hover:bg-white/10 hover:text-white">
+                Sobre mim <ArrowDown className="size-5" />
               </Button>
             </Link>
           </div>
-        </div>
       </Section>
-      <Section id="about" imageSrc={imgSection2} imageAlt="isso e uma imagem">
-        <div className="flex flex-col w-2xs">
+      <Section id="about" imageSrc={imgSection2} imageAlt="Ilustração de apresentação">
+        <div className="max-w-md space-y-4">
           <Title text="Sobre mim" />
           <p>
             Sou desenvolvedor Full Stack apaixonado por criar soluções
@@ -77,15 +76,15 @@ export default function Home() {
             modernas.
           </p>
 
-          <div className="flex gap-3.5">
+          <div className="flex flex-wrap gap-4 pt-1">
             <LocationAndDate text="Brasil" icon={MapPin} />
             <LocationAndDate text="23 anos" icon={Calendar} />
           </div>
         </div>
       </Section>
-      <Section id="stacks" imageSrc={imgSection3} imageAlt="isso e uma imagem">
+      <Section id="stacks" imageSrc={imgSection3} imageAlt="Ilustração de habilidades">
         <Title text="Minhas habilidades" />
-        <div className="flex gap-4">
+        <div className="flex flex-wrap gap-3.5">
           {mapStacks.map((e) => (
             <Stack key={e.id} svg={e.svg} alt={e.alt} />
           ))}
@@ -94,21 +93,21 @@ export default function Home() {
       <Section
         id="projects"
         imageSrc={imgSection4}
-        imageAlt="isso e uma imagem"
+        imageAlt="Ilustração de projetos"
       >
         <Title text="Projetos em destaque" />
 
-        <div className="w-full flex gap-4 justify-center items-center">
+        <div className="flex flex-wrap gap-6">
           <CardProject title="GitHub Finder" />
           <CardProject title="Gerenciador de Tarefas" />
         </div>
 
-        <a className="flex items-center gap-2 text-primary-font" href="">
+        <a className="flex items-center gap-2 text-lg text-primary-font transition-colors hover:text-white" href="#projects">
           Ver todos os projetos
           <ArrowRight size={18} />
         </a>
       </Section>
-      <Section id="contact" imageSrc={imgSection5} imageAlt="isso e uma imagem">
+      <Section id="contact" imageSrc={imgSection5} imageAlt="Ilustração de contato">
         <Title text={"Vamos conversar"} />
 
         <p>
@@ -116,13 +115,13 @@ export default function Home() {
         </p>
 
         <div>
-          <ul className="flex gap-3.5">
+          <ul className="flex flex-wrap gap-5">
             <li>
               <a
                 href="mailto:fabiocoutinho5499@gmail.com"
                 aria-label="Enviar e-mail para Fábio Coutinho"
               >
-                <Mail size={48} />
+                <Mail className="size-10 rounded-lg border border-white/10 bg-[#0A0F17] p-2 text-primary-font transition-transform hover:-translate-y-1 sm:size-[78px]" />
               </a>
             </li>
             <li>
@@ -131,7 +130,7 @@ export default function Home() {
                 download="meu-curriculo.pdf"
                 aria-label="Baixar currículo"
               >
-                <FileUser size={48} />
+                <FileUser className="size-10 rounded-lg border border-white/10 bg-[#0A0F17] p-2 text-primary-font transition-transform hover:-translate-y-1 sm:size-[78px]" />
               </a>
             </li>
             <li>
@@ -139,17 +138,17 @@ export default function Home() {
                 <Image
                   src={github}
                   alt="GitHub logo"
-                  className="w-12"
-                  aria-label="Ir para o LinkedIn de Fabio Coutinho"
+                  className="size-10 rounded-lg border border-white/10 bg-[#0A0F17] p-2 transition-transform hover:-translate-y-1 sm:size-[78px]"
+                  aria-label="Ir para o GitHub de Fabio Coutinho"
                 />
               </Link>
             </li>
             <li>
               <Link
                 href="https://www.linkedin.com/in/fabio-coutinho-/"
-                aria-label="Ir para o GitHub de Fabio Coutinho"
+                aria-label="Ir para o LinkedIn de Fabio Coutinho"
               >
-                <Image src={linkedIn} alt="GitHub logo" className="w-12" />
+              <Image src={linkedIn} alt="LinkedIn logo" className="size-10 rounded-lg border border-white/10 bg-[#0A0F17] p-2 transition-transform hover:-translate-y-1 sm:size-[78px]" />
               </Link>
             </li>
           </ul>
