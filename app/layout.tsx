@@ -33,7 +33,8 @@ export default function RootLayout({
           </Button>
           </div>
         </header>
-        <main>{children}</main>
+        {/* O header é fixo; este espaço reserva seus 4rem de altura. */}
+        <main className="pt-16">{children}</main>
       </body>
     </html>
   );
