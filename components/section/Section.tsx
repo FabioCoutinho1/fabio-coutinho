@@ -3,7 +3,7 @@
 import Image, { StaticImageData } from "next/image";
 import { useGSAP } from "@gsap/react";
 import { ReactNode, useRef } from "react";
-import { gsap } from "@/lib/gsap";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
 
 interface SectionProps {
   children: ReactNode;
@@ -24,17 +24,16 @@ export default function Section({
       const media = gsap.matchMedia();
 
       media.add("(prefers-reduced-motion: no-preference)", () => {
+        const section = sectionRef.current;
+
+        if (!section) return;
+
         const content = gsap.utils.toArray<HTMLElement>(
           ".gsap-section-content :is(h1, h2, h3, p, a, li, [data-gsap-reveal])",
         );
 
         const timeline = gsap.timeline({
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 10%",
-            // play ao entrar por cima ou por baixo; reverse ao sair da seção.
-            toggleActions: "play reverse play reverse",
-          },
+          paused: true,
           defaults: { ease: "power3.out" },
         });
 
@@ -57,6 +56,27 @@ export default function Section({
             },
             0.15,
           );
+
+        // Mantém a animação ativa até a seção já estar saindo mais da tela.
+        // Um limiar menor amplia a faixa visível antes do reverse.
+        const getVisibleSectionThreshold = () => section.offsetHeight * 0.8;
+        const getHeaderHeight = () =>
+          document.querySelector("header")?.clientHeight ?? 0;
+        // A seção fica ativa na faixa em que ao menos 60% dela está
+        // dentro da área útil abaixo do header, nos dois sentidos do scroll.
+        const visibilityObserver = ScrollTrigger.create({
+          trigger: section,
+          start: () =>
+            `top ${window.innerHeight - getVisibleSectionThreshold()}px`,
+          end: () =>
+            `bottom ${getHeaderHeight() + getVisibleSectionThreshold()}px`,
+          onEnter: () => timeline.restart(),
+          onEnterBack: () => timeline.restart(),
+          onLeave: () => timeline.reverse(),
+          onLeaveBack: () => timeline.reverse(),
+        });
+
+        return () => visibilityObserver.kill();
       });
 
       return () => media.revert();

@@ -8,7 +8,7 @@ interface CardProjectTypeProops {
 
 export default function CardProject({ title }: CardProjectTypeProops) {
   return (
-    <Card className="w-[216px] overflow-hidden border-white/10 bg-[#0A0F17] py-0 text-white shadow-none">
+    <Card className="w-[216px] overflow-hidden border-border bg-surface py-0 shadow-none">
       <Image
         src="https://placehold.co/600x400/2F2E88/FFF"
         alt={`Prévia do projeto ${title}`}

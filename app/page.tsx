@@ -26,8 +26,13 @@ import svgRedis from "@/app/assets/svg.stacks/icons-redis.svg";
 import svgDocker from "@/app/assets/svg.stacks/icons-docker.svg";
 import svgReact from "@/app/assets/svg.stacks/icons-react.svg";
 import svgNode from "@/app/assets/svg.stacks/icons-nodejs.svg";
+import svgTypeScript from "@/app/assets/svg.stacks/datilografado.svg";
+import svgExpress from "@/app/assets/svg.stacks/expressar.svg";
+import svgNext from "@/app/assets/svg.stacks/nextjs.svg";
 
-import github from "@/app/assets/svg/github.svg";
+import githubligth from "@/app/assets/svg/githubLigth.svg";
+import githubDark from "@/app/assets/svg/githubDark.svg";
+
 import linkedIn from "@/app/assets/svg/linkedin.svg";
 import Stack from "@/components/stacks/Stacks";
 import Title from "@/components/typography/Title";
@@ -43,29 +48,46 @@ export default function Home() {
     { id: 5, svg: svgDocker, alt: "logo docker" },
     { id: 6, svg: svgReact, alt: "logo java" },
     { id: 7, svg: svgNode, alt: "logo node" },
+    { id: 8, svg: svgTypeScript, alt: "Logo TypeScript" },
+    { id: 9, svg: svgExpress, alt: "Logo Express", invertInDarkMode: true },
+    { id: 10, svg: svgNext, alt: "Logo Next", invertInDarkMode: true },
   ];
 
   return (
     <>
-      <Section id="hero" imageSrc={imgSection1} imageAlt="Ilustração de Fabio Coutinho">
+      <Section
+        id="hero"
+        imageSrc={imgSection1}
+        imageAlt="Ilustração de Fabio Coutinho"
+      >
         <div className="space-y-1">
           <p className="text-3xl sm:text-4xl">Olá, eu sou</p>
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">Fabio Coutinho</h1>
-          <p className="text-2xl text-primary-font sm:text-3xl">Desenvolvedor Full Stack</p>
-          <p className="pt-1 text-lg">Java • Spring • React</p>
+          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+            Fabio Coutinho
+          </h1>
+          <p className="text-2xl text-primary-font sm:text-3xl">
+            Desenvolvedor Full Stack
+          </p>
+          <p className="pt-1 text-lg">
+            Java • Spring • React/Next • TypeScrip • Node.js • PostgreSql
+          </p>
         </div>
-          <div className="flex flex-wrap gap-4">
-            <Link href="#projects">
-              <Button className="rounded-2xl bg-[#725aef] px-4 text-base hover:bg-[#6049d4]">Ver projetos</Button>
-            </Link>
-            <Link href="#about">
-              <Button variant="outline" className="rounded-2xl border-white bg-transparent px-4 text-base text-white hover:bg-white/10 hover:text-white">
-                Sobre mim <ArrowDown className="size-5" />
-              </Button>
-            </Link>
-          </div>
+        <div className="flex flex-wrap gap-4">
+          <Link href="#projects">
+            <Button className="rounded-2xl px-4 text-base">Ver projetos</Button>
+          </Link>
+          <Link href="#about">
+            <Button variant="outline" className="rounded-2xl px-4 text-base">
+              Sobre mim <ArrowDown className="size-5" />
+            </Button>
+          </Link>
+        </div>
       </Section>
-      <Section id="about" imageSrc={imgSection2} imageAlt="Ilustração de apresentação">
+      <Section
+        id="about"
+        imageSrc={imgSection2}
+        imageAlt="Ilustração de apresentação"
+      >
         <div className="max-w-md space-y-4">
           <Title text="Sobre mim" />
           <p>
@@ -82,11 +104,20 @@ export default function Home() {
           </div>
         </div>
       </Section>
-      <Section id="stacks" imageSrc={imgSection3} imageAlt="Ilustração de habilidades">
+      <Section
+        id="stacks"
+        imageSrc={imgSection3}
+        imageAlt="Ilustração de habilidades"
+      >
         <Title text="Minhas habilidades" />
         <div className="flex flex-wrap gap-3.5">
           {mapStacks.map((e) => (
-            <Stack key={e.id} svg={e.svg} alt={e.alt} />
+            <Stack
+              key={e.id}
+              svg={e.svg}
+              alt={e.alt}
+              invertInDarkMode={e.invertInDarkMode}
+            />
           ))}
         </div>
       </Section>
@@ -102,12 +133,19 @@ export default function Home() {
           <CardProject title="Gerenciador de Tarefas" />
         </div>
 
-        <a className="flex items-center gap-2 text-lg text-primary-font transition-colors hover:text-white" href="#projects">
+        <a
+          className="flex items-center gap-2 text-lg text-primary-font transition-colors hover:text-foreground"
+          href="#projects"
+        >
           Ver todos os projetos
           <ArrowRight size={18} />
         </a>
       </Section>
-      <Section id="contact" imageSrc={imgSection5} imageAlt="Ilustração de contato">
+      <Section
+        id="contact"
+        imageSrc={imgSection5}
+        imageAlt="Ilustração de contato"
+      >
         <Title text={"Vamos conversar"} />
 
         <p>
@@ -121,7 +159,7 @@ export default function Home() {
                 href="mailto:fabiocoutinho5499@gmail.com"
                 aria-label="Enviar e-mail para Fábio Coutinho"
               >
-                <Mail className="size-10 rounded-lg border border-white/10 bg-[#0A0F17] p-2 text-primary-font transition-transform hover:-translate-y-1 sm:size-[78px]" />
+                <Mail className="size-10 rounded-lg border border-border bg-surface p-2 text-primary-font transition-transform hover:-translate-y-1 sm:size-[78px]" />
               </a>
             </li>
             <li>
@@ -130,15 +168,21 @@ export default function Home() {
                 download="meu-curriculo.pdf"
                 aria-label="Baixar currículo"
               >
-                <FileUser className="size-10 rounded-lg border border-white/10 bg-[#0A0F17] p-2 text-primary-font transition-transform hover:-translate-y-1 sm:size-[78px]" />
+                <FileUser className="size-10 rounded-lg border border-border bg-surface p-2 text-primary-font transition-transform hover:-translate-y-1 sm:size-[78px]" />
               </a>
             </li>
             <li>
               <Link href="https://github.com/FabioCoutinho1">
                 <Image
-                  src={github}
+                  src={githubDark}
                   alt="GitHub logo"
-                  className="size-10 rounded-lg border border-white/10 bg-[#0A0F17] p-2 transition-transform hover:-translate-y-1 sm:size-[78px]"
+                  className="size-10 rounded-lg border border-border bg-surface p-2 transition-transform hover:-translate-y-1 sm:size-[78px] hidden dark:block"
+                  aria-label="Ir para o GitHub de Fabio Coutinho"
+                />
+                <Image
+                  src={githubligth}
+                  alt="GitHub logo"
+                  className="size-10 rounded-lg border border-border bg-surface p-2 transition-transform hover:-translate-y-1 sm:size-[78px] dark:hidden"
                   aria-label="Ir para o GitHub de Fabio Coutinho"
                 />
               </Link>
@@ -148,7 +192,11 @@ export default function Home() {
                 href="https://www.linkedin.com/in/fabio-coutinho-/"
                 aria-label="Ir para o LinkedIn de Fabio Coutinho"
               >
-              <Image src={linkedIn} alt="LinkedIn logo" className="size-10 rounded-lg border border-white/10 bg-[#0A0F17] p-2 transition-transform hover:-translate-y-1 sm:size-[78px]" />
+                <Image
+                  src={linkedIn}
+                  alt="LinkedIn logo"
+                  className="size-10 rounded-lg border border-border bg-surface p-2 transition-transform hover:-translate-y-1 sm:size-[78px]"
+                />
               </Link>
             </li>
           </ul>
