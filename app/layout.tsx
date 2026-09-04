@@ -4,6 +4,7 @@ import NavBar from "@/components/navbar/NavBar";
 import Link from "next/link";
 import ThemeToggle from "@/components/theme-toggle/ThemeToggle";
 import ThemeProvider from "@/components/theme-provaider";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -36,7 +37,9 @@ export default function RootLayout({
               <ThemeToggle />
             </div>
           </header>
-          <main className="pt-16">{children}</main>
+          <main className="pt-16">
+            <TooltipProvider>{children}</TooltipProvider>
+          </main>
         </ThemeProvider>
       </body>
     </html>

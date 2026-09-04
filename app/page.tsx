@@ -38,19 +38,33 @@ import Stack from "@/components/stacks/Stacks";
 import Title from "@/components/typography/Title";
 import LocationAndDate from "@/components/locationAndDate/LocationAndDate";
 import CardProject from "@/components/cardProject/CardProject";
+import ProjectDialog from "@/components/Dialog/ProjectDialog";
+import { projects } from "./data/proejcs";
 
 export default function Home() {
   const mapStacks = [
-    { id: 1, svg: svgJava, alt: "logo java" },
-    { id: 2, svg: svgSpring, alt: "logo spring boot" },
-    { id: 3, svg: svgPostgres, alt: "logo postgresSql" },
-    { id: 4, svg: svgRedis, alt: "logo redis" },
-    { id: 5, svg: svgDocker, alt: "logo docker" },
-    { id: 6, svg: svgReact, alt: "logo java" },
-    { id: 7, svg: svgNode, alt: "logo node" },
-    { id: 8, svg: svgTypeScript, alt: "Logo TypeScript" },
-    { id: 9, svg: svgExpress, alt: "Logo Express", invertInDarkMode: true },
-    { id: 10, svg: svgNext, alt: "Logo Next", invertInDarkMode: true },
+    { id: 1, name: "Java", svg: svgJava, alt: "logo java" },
+    { id: 2, name: "SpringBoot", svg: svgSpring, alt: "logo spring boot" },
+    { id: 3, name: "PostgreSql", svg: svgPostgres, alt: "logo postgresSql" },
+    { id: 4, name: "Redis", svg: svgRedis, alt: "logo redis" },
+    { id: 5, name: "Docker", svg: svgDocker, alt: "logo docker" },
+    { id: 6, name: "React", svg: svgReact, alt: "logo java" },
+    { id: 7, name: "Node.js", svg: svgNode, alt: "logo node" },
+    { id: 8, name: "TypeScript", svg: svgTypeScript, alt: "Logo TypeScript" },
+    {
+      id: 9,
+      name: "Express",
+      svg: svgExpress,
+      alt: "Logo Express",
+      invertInDarkMode: true,
+    },
+    {
+      id: 10,
+      name: "Next.js",
+      svg: svgNext,
+      alt: "Logo Next",
+      invertInDarkMode: true,
+    },
   ];
 
   return (
@@ -73,12 +87,12 @@ export default function Home() {
           </p>
         </div>
         <div className="flex flex-wrap gap-4">
-          <Link href="#projects">
-            <Button className="rounded-2xl px-4 text-base">Ver projetos</Button>
+          <Link href="#contact">
+            <Button className="rounded-2xl px-4 text-base">Contatos</Button>
           </Link>
-          <Link href="#about">
+          <Link href="#projects">
             <Button variant="outline" className="rounded-2xl px-4 text-base">
-              Sobre mim <ArrowDown className="size-5" />
+              Meus projetos <ArrowDown className="size-5" />
             </Button>
           </Link>
         </div>
@@ -116,6 +130,7 @@ export default function Home() {
               key={e.id}
               svg={e.svg}
               alt={e.alt}
+              taskName={e.name}
               invertInDarkMode={e.invertInDarkMode}
             />
           ))}
@@ -128,14 +143,28 @@ export default function Home() {
       >
         <Title text="Projetos em destaque" />
 
-        <div className="flex flex-wrap gap-6">
-          <CardProject title="GitHub Finder" />
-          <CardProject title="Gerenciador de Tarefas" />
+        <div className="flex flex-wrap gap-6 items-start">
+          {projects.slice(0, 2).map((project) => (
+            <ProjectDialog
+              key={project.nameProject}
+              image={project.images}
+              description={project.description}
+              nameProject={project.nameProject}
+              stacks={project.stacks}
+              gitHubUrl={project.gitHubUrl}
+              projectUrl={project.projectUrl}
+            >
+              <CardProject
+                stacks={project.stacks}
+                title={project.nameProject}
+              />
+            </ProjectDialog>
+          ))}
         </div>
 
         <a
           className="flex items-center gap-2 text-lg text-primary-font transition-colors hover:text-foreground"
-          href="#projects"
+          href="/projects"
         >
           Ver todos os projetos
           <ArrowRight size={18} />
@@ -159,7 +188,7 @@ export default function Home() {
                 href="mailto:fabiocoutinho5499@gmail.com"
                 aria-label="Enviar e-mail para Fábio Coutinho"
               >
-                <Mail className="size-10 rounded-lg border border-border bg-surface p-2 text-primary-font transition-transform hover:-translate-y-1 sm:size-[78px]" />
+                <Mail className="size-10 rounded-lg border border-border bg-surface p-2 text-primary-font transition-transform hover:-translate-y-1 sm:size-19.5" />
               </a>
             </li>
             <li>
@@ -168,7 +197,7 @@ export default function Home() {
                 download="meu-curriculo.pdf"
                 aria-label="Baixar currículo"
               >
-                <FileUser className="size-10 rounded-lg border border-border bg-surface p-2 text-primary-font transition-transform hover:-translate-y-1 sm:size-[78px]" />
+                <FileUser className="size-10 rounded-lg border border-border bg-surface p-2 text-primary-font transition-transform hover:-translate-y-1 sm:size-19.5" />
               </a>
             </li>
             <li>
@@ -176,13 +205,13 @@ export default function Home() {
                 <Image
                   src={githubDark}
                   alt="GitHub logo"
-                  className="size-10 rounded-lg border border-border bg-surface p-2 transition-transform hover:-translate-y-1 sm:size-[78px] hidden dark:block"
+                  className="size-10 rounded-lg border border-border bg-surface p-2 transition-transform hover:-translate-y-1 sm:size-19.5 hidden dark:block"
                   aria-label="Ir para o GitHub de Fabio Coutinho"
                 />
                 <Image
                   src={githubligth}
                   alt="GitHub logo"
-                  className="size-10 rounded-lg border border-border bg-surface p-2 transition-transform hover:-translate-y-1 sm:size-[78px] dark:hidden"
+                  className="size-10 rounded-lg border border-border bg-surface p-2 transition-transform hover:-translate-y-1 sm:size-19.5 dark:hidden"
                   aria-label="Ir para o GitHub de Fabio Coutinho"
                 />
               </Link>
@@ -195,7 +224,7 @@ export default function Home() {
                 <Image
                   src={linkedIn}
                   alt="LinkedIn logo"
-                  className="size-10 rounded-lg border border-border bg-surface p-2 transition-transform hover:-translate-y-1 sm:size-[78px]"
+                  className="size-10 rounded-lg border border-border bg-surface p-2 transition-transform hover:-translate-y-1 sm:size-19.5"
                 />
               </Link>
             </li>
