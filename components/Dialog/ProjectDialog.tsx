@@ -68,10 +68,9 @@ export default function ProjectDialog({
                 <CarouselItem key={index}>
                   <Image
                     src={e}
-                    alt={`Prévia do projeto`}
+                    alt={`Prévia ${index + 1} do projeto ${nameProject}`}
                     width={600}
                     height={300}
-                    unoptimized
                     className="object-contain max-w-150 max-h-80"
                   />
                 </CarouselItem>
@@ -86,8 +85,11 @@ export default function ProjectDialog({
             {nameProject}
             <nav>
               <ul className="flex gap-4 *:w-6  *:transition-transform *:hover:-translate-y-1 ">
-                <li aria-label="Ir para o GitHub de Fabio Coutinho">
-                  <Link href={gitHubUrl}>
+                <li>
+                  <Link
+                    href={gitHubUrl}
+                    aria-label={`Ver ${nameProject} no GitHub`}
+                  >
                     <Image
                       src={githubDark}
                       alt="GitHub logo"
@@ -100,13 +102,10 @@ export default function ProjectDialog({
                     />
                   </Link>
                 </li>
-                <li
-                  content="Ir para o projeto"
-                  aria-label="Ir para o Projeto de Fabio Coutinho"
-                >
+                <li>
                   <Link
                     href={projectUrl}
-                    aria-label="Ir para o LinkedIn de Fabio Coutinho"
+                    aria-label={`Abrir o projeto ${nameProject}`}
                   >
                     <ArrowRight />
                   </Link>

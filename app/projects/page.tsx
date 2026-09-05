@@ -2,7 +2,6 @@
 
 import CardProject from "@/components/cardProject/CardProject";
 import ProjectDialog from "@/components/Dialog/ProjectDialog";
-import Title from "@/components/typography/Title";
 import { projects } from "@/app/data/proejcs";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { useRef } from "react";
@@ -33,7 +32,9 @@ export default function Page() {
       ref={sectionProjectsRef}
       className="section-gsap min-h-[calc(100vh-4rem)] flex flex-col items-center gap-10 overflow-hidden bg-background py-16 text-white sm:py-24"
     >
-      <Title text="Todos meus projetos" />
+      <h1 className="text-3xl font-bold tracking-tight text-primary-font sm:text-4xl">
+        Todos os meus projetos
+      </h1>
 
       <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4 items-start">
         {projects.map((project, index) => (

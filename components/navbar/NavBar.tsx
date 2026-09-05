@@ -2,7 +2,10 @@ import Link from "next/link";
 
 export default function NavBar() {
   return (
-    <nav className="hidden text-foreground md:block">
+    <nav
+      aria-label="Navegação principal"
+      className="hidden text-foreground md:block"
+    >
       <ul className="flex items-center gap-7 text-sm">
         <li>
           <Link

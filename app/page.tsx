@@ -48,7 +48,7 @@ export default function Home() {
     { id: 3, name: "PostgreSql", svg: svgPostgres, alt: "logo postgresSql" },
     { id: 4, name: "Redis", svg: svgRedis, alt: "logo redis" },
     { id: 5, name: "Docker", svg: svgDocker, alt: "logo docker" },
-    { id: 6, name: "React", svg: svgReact, alt: "logo java" },
+    { id: 6, name: "React", svg: svgReact, alt: "Logo React" },
     { id: 7, name: "Node.js", svg: svgNode, alt: "logo node" },
     { id: 8, name: "TypeScript", svg: svgTypeScript, alt: "Logo TypeScript" },
     {
@@ -83,7 +83,7 @@ export default function Home() {
             Desenvolvedor Full Stack
           </p>
           <p className="pt-1 text-lg">
-            Java • Spring • React/Next • TypeScrip • Node.js • PostgreSql
+            Java • Spring • React/Next • TypeScript • Node.js • PostgreSQL
           </p>
         </div>
         <div className="flex flex-wrap gap-4">
@@ -166,6 +166,7 @@ export default function Home() {
         <a
           className="flex items-center gap-2 text-lg text-primary-font transition-colors hover:text-foreground"
           href="/projects"
+          aria-label="Ver todos os projetos de Fabio Coutinho"
         >
           Ver todos os projetos
           <ArrowRight size={18} />

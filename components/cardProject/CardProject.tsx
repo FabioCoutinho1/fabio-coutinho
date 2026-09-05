@@ -24,7 +24,6 @@ export default function CardProject({
         alt={`Prévia do projeto ${title}`}
         width={600}
         height={400}
-        unoptimized
         className="object-cover"
       />
 
