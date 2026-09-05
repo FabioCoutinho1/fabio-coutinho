@@ -4,7 +4,6 @@ import Image, { StaticImageData } from "next/image";
 import { useGSAP } from "@gsap/react";
 import { ReactNode, useRef } from "react";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
-import { Box } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -30,7 +29,6 @@ export default function Section({
           start: "top 10%",
           end: "bottom 60%",
           toggleActions: "play reverse play reverse",
-          markers: true,
         },
       });
       tl.from(".gsap-section-avatar", {

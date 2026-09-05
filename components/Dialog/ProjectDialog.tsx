@@ -49,12 +49,13 @@ export default function ProjectDialog({
     <Dialog>
       <DialogTrigger>{children}</DialogTrigger>
       <DialogContent
-        className="lg:max-w-[60%]
-    max-h-[90vh]
-    flex
-    flex-col
-    gap-4
-    overflow-hidden"
+        className="lg:max-w-150
+                    md:max-w-[60%]
+                    max-h-[90vh]
+                    flex
+                    flex-col
+                    gap-4
+                    overflow-hidden"
       >
         <DialogHeader>
           <Carousel
@@ -68,10 +69,10 @@ export default function ProjectDialog({
                   <Image
                     src={e}
                     alt={`Prévia do projeto`}
-                    width={1920}
-                    height={1000}
+                    width={600}
+                    height={300}
                     unoptimized
-                    className="object-cover"
+                    className="object-contain max-w-150 max-h-80"
                   />
                 </CarouselItem>
               ))}

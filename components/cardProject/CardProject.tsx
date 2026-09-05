@@ -5,13 +5,22 @@ import { Card, CardDescription, CardHeader, CardTitle } from "../ui/card";
 interface CardProjectTypeProops {
   title: string;
   stacks: string[];
+  image: string;
+  className?: string;
 }
 
-export default function CardProject({ title, stacks }: CardProjectTypeProops) {
+export default function CardProject({
+  title,
+  stacks,
+  image,
+  className,
+}: CardProjectTypeProops) {
   return (
-    <Card className="w-54 overflow-hidden border-border bg-surface py-0 shadow-none cursor-pointer">
+    <Card
+      className={`${className} w-54 overflow-hidden border-border bg-surface py-0 shadow-none cursor-pointer`}
+    >
       <Image
-        src="https://placehold.co/600x400/2F2E88/FFF"
+        src={image}
         alt={`Prévia do projeto ${title}`}
         width={600}
         height={400}

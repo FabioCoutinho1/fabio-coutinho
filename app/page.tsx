@@ -155,6 +155,7 @@ export default function Home() {
               projectUrl={project.projectUrl}
             >
               <CardProject
+                image={project.images[0]}
                 stacks={project.stacks}
                 title={project.nameProject}
               />

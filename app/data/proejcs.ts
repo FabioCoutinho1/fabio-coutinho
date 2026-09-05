@@ -2,6 +2,7 @@ export interface Project {
   nameProject: string;
   description: string;
   images: string[];
+  imageMiniCard: string;
   stacks: string[];
   gitHubUrl: string;
   projectUrl: string;
@@ -34,10 +35,18 @@ O frontend é preparado para deploy na **Vercel**.
 `,
 
     images: [
-      "https://placehold.co/1920x1000/2F2E88/FFF",
-      "https://placehold.co/1920x1000/3D3E46/FFF",
-      "https://placehold.co/1920x1000/5F5E11/FFF",
+      "/projects/todo-with-java/tela-login-desk.png",
+      "/projects/todo-with-java/home-desk.png",
+      "/projects/todo-with-java/tela-login-mobile.png",
+      "/projects/todo-with-java/menu-direto-desk.png",
+      "/projects/todo-with-java/home-mobile.png",
+      "/projects/todo-with-java/menu-esquerdo-mobile.png",
+      "/projects/todo-with-java/menu-esquerdo-desk.png",
+      "/projects/todo-with-java/tela-cadastro-desk.png",
+      "/projects/todo-with-java/menu-direto-mobile.png",
     ],
+
+    imageMiniCard: "/projects/todo-with-java/tela-login-desk.png",
 
     stacks: [
       "React",
@@ -63,24 +72,5 @@ O frontend é preparado para deploy na **Vercel**.
       "https://github.com/FabioCoutinho1/ToDo-Advanced-with-Spring-Boot",
     projectUrl: "https://geranciador-de-tarefas.vercel.app/login",
   },
-
-  {
-    nameProject: "Meu Segundo Projeto",
-
-    description: `
-## Meu Segundo Projeto
-
-Descrição do segundo projeto...
-`,
-
-    images: [
-      "https://placehold.co/1920x1000/222/FFF",
-      "https://placehold.co/1920x1000/444/FFF",
-    ],
-
-    stacks: ["React", "TypeScript", "Next.js", "Tailwind CSS"],
-
-    gitHubUrl: "#",
-    projectUrl: "#",
-  },
+  //Sergundo Projeto
 ];
