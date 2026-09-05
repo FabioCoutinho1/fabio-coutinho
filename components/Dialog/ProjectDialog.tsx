@@ -49,30 +49,33 @@ export default function ProjectDialog({
     <Dialog>
       <DialogTrigger>{children}</DialogTrigger>
       <DialogContent
-        className="lg:max-w-150
-                    md:max-w-[60%]
-                    max-h-[90vh]
-                    flex
-                    flex-col
-                    gap-4
-                    overflow-hidden"
+        className=" w-[calc(100%-2rem)]
+    max-w-none
+    md:max-w-[60%]
+    lg:max-w-150
+    max-h-[90vh]
+    flex flex-col gap-4
+    overflow-hidden"
       >
         <DialogHeader>
           <Carousel
             opts={{
               loop: true,
             }}
+            className="w-full"
           >
             <CarouselContent>
               {image.map((e, index) => (
                 <CarouselItem key={index}>
-                  <Image
-                    src={e}
-                    alt={`Prévia ${index + 1} do projeto ${nameProject}`}
-                    width={600}
-                    height={300}
-                    className="object-contain max-w-150 max-h-80"
-                  />
+                  <div className="flex">
+                    <Image
+                      src={e}
+                      alt={`Prévia ${index + 1} do projeto ${nameProject}`}
+                      width={600}
+                      height={300}
+                      className="object-contain max-w-150 max-h-80"
+                    />
+                  </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
