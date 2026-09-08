@@ -34,6 +34,7 @@ import githubligth from "@/app/assets/svg/githubLigth.svg";
 import githubDark from "@/app/assets/svg/githubDark.svg";
 
 import linkedIn from "@/app/assets/svg/linkedin.svg";
+
 import Stack from "@/components/stacks/Stacks";
 import Title from "@/components/typography/Title";
 import LocationAndDate from "@/components/locationAndDate/LocationAndDate";
