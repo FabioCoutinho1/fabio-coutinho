@@ -1,6 +1,26 @@
+"use client";
+
+import { ScrollSmoother } from "gsap/ScrollSmoother";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function NavBar() {
+  const pathname = usePathname();
+
+  function handleScroll(to: string): void {
+    ScrollSmoother.get()?.scrollTo(to, true);
+  }
+
+  function handleScrollPath(
+    e: React.MouseEvent<HTMLAnchorElement>,
+    section: string,
+  ): void {
+    if (pathname === "/") {
+      e.preventDefault();
+      handleScroll(section);
+    }
+  }
+
   return (
     <nav
       aria-label="Navegação principal"
@@ -11,6 +31,9 @@ export default function NavBar() {
           <Link
             className="transition-colors hover:text-primary-font"
             href="/#hero"
+            onClick={(e) => {
+              handleScrollPath(e, "#hero");
+            }}
           >
             Início
           </Link>
@@ -19,6 +42,9 @@ export default function NavBar() {
           <Link
             className="transition-colors hover:text-primary-font"
             href="/#about"
+            onClick={(e) => {
+              handleScrollPath(e, "#about");
+            }}
           >
             Sobre
           </Link>
@@ -27,6 +53,9 @@ export default function NavBar() {
           <Link
             className="transition-colors hover:text-primary-font"
             href="/#stacks"
+            onClick={(e) => {
+              handleScrollPath(e, "#stacks");
+            }}
           >
             Habilidades
           </Link>
@@ -35,6 +64,9 @@ export default function NavBar() {
           <Link
             className="transition-colors hover:text-primary-font"
             href="/#projects"
+            onClick={(e) => {
+              handleScrollPath(e, "#projects");
+            }}
           >
             Projetos
           </Link>
@@ -43,6 +75,9 @@ export default function NavBar() {
           <Link
             className="transition-colors hover:text-primary-font"
             href="/#contact"
+            onClick={(e) => {
+              handleScrollPath(e, "#contact");
+            }}
           >
             Contatos
           </Link>

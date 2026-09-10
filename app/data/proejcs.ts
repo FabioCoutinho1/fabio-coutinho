@@ -5,7 +5,7 @@ export interface Project {
   imageMiniCard: string;
   stacks: string[];
   gitHubUrl: string;
-  projectUrl: string;
+  projectUrl?: string;
 }
 
 export const projects: Project[] = [
@@ -73,4 +73,91 @@ O frontend é preparado para deploy na **Vercel**.
     projectUrl: "https://geranciador-de-tarefas.vercel.app/login",
   },
   //Sergundo Projeto
+  {
+    nameProject: "Mini Bank — Java MVC",
+
+    description: `
+## Mini Bank — Java MVC
+
+Aplicação de terminal desenvolvida em **Java** para simular operações bancárias básicas, com foco na prática de **Programação Orientada a Objetos** e do padrão arquitetural **MVC**.
+
+### Funcionalidades
+
+O sistema permite criar e acessar contas **corrente ou poupança**, além de realizar operações como **depósito, saque e consulta de saldo**.
+
+### Arquitetura
+
+O projeto utiliza o padrão **MVC**, separando as responsabilidades entre:
+
+- **Model:** entidades e regras de negócio
+- **Controller:** controle do fluxo da aplicação
+- **View:** interação com o usuário pelo terminal
+
+O projeto foi desenvolvido com **Java 21+**, sem frameworks, como forma de consolidar os fundamentos da linguagem e da arquitetura MVC.
+`,
+
+    images: [
+      "/projects/todo-with-java/tela-login-desk.png",
+      "/projects/todo-with-java/home-desk.png",
+      "/projects/todo-with-java/tela-login-mobile.png",
+    ],
+
+    imageMiniCard: "",
+
+    stacks: ["Java", "OOP", "MVC", "JDK 21"],
+
+    gitHubUrl:
+      "https://github.com/FabioCoutinho1/Mini-Bank-using-Java-with-MVC",
+  },
+
+  {
+    nameProject: "Mini Server — REST API",
+
+    description: `
+## Mini Server — REST API
+
+API REST desenvolvida com **TypeScript e Node.js**, utilizando **Express** para construção do servidor e **PostgreSQL** para persistência dos dados.
+
+O projeto foi desenvolvido com foco na prática de desenvolvimento backend, organização de código, autenticação e validação de dados.
+
+### Backend
+
+A aplicação utiliza **Express** para criação do servidor e definição das rotas, com uma estrutura modular separando responsabilidades entre aplicação, rotas, módulos, bibliotecas e tipos.
+
+### Banco de dados
+
+A persistência dos dados é realizada com **PostgreSQL**, utilizando **Prisma ORM** para modelagem e acesso ao banco de dados.
+
+### Segurança
+
+O projeto utiliza **JWT** para autenticação, **bcrypt** para proteção de senhas e **Zod** para validação dos dados recebidos pela API.
+
+### Infraestrutura
+
+O projeto possui configuração com **Docker e Docker Compose**, permitindo executar a aplicação e seus serviços de forma isolada e reproduzível.
+`,
+
+    images: [
+      "/projects/todo-with-java/tela-login-desk.png",
+      "/projects/todo-with-java/home-desk.png",
+      "/projects/todo-with-java/tela-login-mobile.png",
+    ],
+
+    imageMiniCard: "",
+
+    stacks: [
+      "TypeScript",
+      "Node.js",
+      "Express",
+      "Prisma",
+      "PostgreSQL",
+      "JWT",
+      "Zod",
+      "bcrypt",
+      "Docker",
+      "Docker Compose",
+    ],
+
+    gitHubUrl: "https://github.com/FabioCoutinho1/Mini-server",
+  },
 ];
