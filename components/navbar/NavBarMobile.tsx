@@ -15,6 +15,8 @@ import {
 } from "../ui/sheet";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { Separator } from "../ui/separator";
 import ThemeToggle from "../theme-toggle/ThemeToggle";
 import Image from "next/image";
@@ -26,6 +28,22 @@ import linkedIn from "@/app/assets/svg/linkedin.svg";
 import { Avatar, AvatarBadge, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 export default function NavBarMobile() {
+  const pathname = usePathname();
+
+  function handleScroll(to: string): void {
+    ScrollSmoother.get()?.scrollTo(to, true);
+  }
+
+  function handleScrollPath(
+    e: React.MouseEvent<HTMLAnchorElement>,
+    section: string,
+  ): void {
+    if (pathname === "/") {
+      e.preventDefault();
+      handleScroll(section);
+    }
+  }
+
   return (
     <Sheet>
       <SheetTrigger
@@ -57,7 +75,10 @@ export default function NavBarMobile() {
                 <li>
                   <Link
                     className="transition-colors hover:text-primary-font flex gap-3 items-center"
-                    href="/#hero"
+                    href="#hero"
+                    onClick={(e) => {
+                      handleScrollPath(e, "#hero");
+                    }}
                   >
                     <Home />
                     Início
@@ -68,7 +89,10 @@ export default function NavBarMobile() {
                 <li>
                   <Link
                     className="transition-colors hover:text-primary-font flex gap-3 items-center"
-                    href="/#about"
+                    href="#about"
+                    onClick={(e) => {
+                      handleScrollPath(e, "#about");
+                    }}
                   >
                     <User />
                     Sobre
@@ -79,7 +103,10 @@ export default function NavBarMobile() {
                 <li>
                   <Link
                     className="transition-colors hover:text-primary-font flex gap-3 items-center"
-                    href="/#stacks"
+                    href="#stacks"
+                    onClick={(e) => {
+                      handleScrollPath(e, "#stacks");
+                    }}
                   >
                     <CodeXml />
                     Habilidades
@@ -90,7 +117,10 @@ export default function NavBarMobile() {
                 <li>
                   <Link
                     className="transition-colors hover:text-primary-font flex gap-3 items-center"
-                    href="/#projects"
+                    href="#projects"
+                    onClick={(e) => {
+                      handleScrollPath(e, "#projects");
+                    }}
                   >
                     <Folder />
                     Projetos
@@ -101,7 +131,10 @@ export default function NavBarMobile() {
                 <li>
                   <Link
                     className="transition-colors hover:text-primary-font flex gap-3 items-center"
-                    href="/#contact"
+                    href="#contact"
+                    onClick={(e) => {
+                      handleScrollPath(e, "#contact");
+                    }}
                   >
                     <ContactRound />
                     Contatos
