@@ -29,7 +29,7 @@ import {
 interface ProjectDialogProps {
   children: ReactNode;
   gitHubUrl: string;
-  projectUrl: string;
+  projectUrl?: string;
   stacks: string[];
   nameProject: string;
   image: string[];
@@ -105,14 +105,16 @@ export default function ProjectDialog({
                     />
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    href={projectUrl}
-                    aria-label={`Abrir o projeto ${nameProject}`}
-                  >
-                    <ArrowRight />
-                  </Link>
-                </li>
+                {projectUrl && (
+                  <li>
+                    <Link
+                      href={projectUrl}
+                      aria-label={`Abrir o projeto ${nameProject}`}
+                    >
+                      <ArrowRight />
+                    </Link>
+                  </li>
+                )}
               </ul>
             </nav>
           </div>
