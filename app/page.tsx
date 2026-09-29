@@ -1,12 +1,5 @@
 import { Button } from "@/components/ui/button";
-import {
-  ArrowDown,
-  ArrowRight,
-  Calendar,
-  FileUser,
-  Mail,
-  MapPin,
-} from "lucide-react";
+import { ArrowDown, Calendar, FileUser, Mail, MapPin } from "lucide-react";
 import "./globals.css";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,7 +9,7 @@ import Section from "@/components/section/Section";
 import imgSection1 from "@/app/assets/img/section1.png";
 import imgSection2 from "@/app/assets/img/section2.png";
 import imgSection3 from "@/app/assets/img/section3.png";
-import imgSection4 from "@/app/assets/img/section4.png";
+
 import imgSection5 from "@/app/assets/img/section5.png";
 
 import svgJava from "@/app/assets/svg.stacks/icons-java.svg";
@@ -34,12 +27,11 @@ import githubligth from "@/app/assets/svg/githubLigth.svg";
 import githubDark from "@/app/assets/svg/githubDark.svg";
 
 import linkedIn from "@/app/assets/svg/linkedin.svg";
+
 import Stack from "@/components/stacks/Stacks";
 import Title from "@/components/typography/Title";
 import LocationAndDate from "@/components/locationAndDate/LocationAndDate";
-import CardProject from "@/components/cardProject/CardProject";
-import ProjectDialog from "@/components/Dialog/ProjectDialog";
-import { projects } from "./data/proejcs";
+import Projects from "@/components/sectionProjects/Projects";
 
 export default function Home() {
   const mapStacks = [
@@ -136,42 +128,7 @@ export default function Home() {
           ))}
         </div>
       </Section>
-      <Section
-        id="projects"
-        imageSrc={imgSection4}
-        imageAlt="Ilustração de projetos"
-      >
-        <Title text="Projetos em destaque" />
-
-        <div className="flex flex-wrap gap-6 items-start">
-          {projects.slice(0, 2).map((project) => (
-            <ProjectDialog
-              key={project.nameProject}
-              image={project.images}
-              description={project.description}
-              nameProject={project.nameProject}
-              stacks={project.stacks}
-              gitHubUrl={project.gitHubUrl}
-              projectUrl={project.projectUrl}
-            >
-              <CardProject
-                image={project.images[0]}
-                stacks={project.stacks}
-                title={project.nameProject}
-              />
-            </ProjectDialog>
-          ))}
-        </div>
-
-        <a
-          className="flex items-center gap-2 text-lg text-primary-font transition-colors hover:text-foreground"
-          href="/projects"
-          aria-label="Ver todos os projetos de Fabio Coutinho"
-        >
-          Ver todos os projetos
-          <ArrowRight size={18} />
-        </a>
-      </Section>
+      <Projects />
       <Section
         id="contact"
         imageSrc={imgSection5}

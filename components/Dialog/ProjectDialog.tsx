@@ -29,7 +29,7 @@ import {
 interface ProjectDialogProps {
   children: ReactNode;
   gitHubUrl: string;
-  projectUrl: string;
+  projectUrl?: string;
   stacks: string[];
   nameProject: string;
   image: string[];
@@ -73,7 +73,7 @@ export default function ProjectDialog({
                       alt={`Prévia ${index + 1} do projeto ${nameProject}`}
                       width={600}
                       height={300}
-                      className="object-contain max-w-150 max-h-80"
+                      className="object-contain  max-h-80"
                     />
                   </div>
                 </CarouselItem>
@@ -105,14 +105,16 @@ export default function ProjectDialog({
                     />
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    href={projectUrl}
-                    aria-label={`Abrir o projeto ${nameProject}`}
-                  >
-                    <ArrowRight />
-                  </Link>
-                </li>
+                {projectUrl && (
+                  <li>
+                    <Link
+                      href={projectUrl}
+                      aria-label={`Abrir o projeto ${nameProject}`}
+                    >
+                      <ArrowRight />
+                    </Link>
+                  </li>
+                )}
               </ul>
             </nav>
           </div>

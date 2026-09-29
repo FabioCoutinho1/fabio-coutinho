@@ -6,6 +6,8 @@ import Link from "next/link";
 import ThemeToggle from "@/components/theme-toggle/ThemeToggle";
 import ThemeProvider from "@/components/theme-provaider";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import NavBarMobile from "@/components/navbar/NavBarMobile";
+import ScrollSmoother from "@/components/scrollSmoother/SmootherScroll";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -75,6 +77,7 @@ export default function RootLayout({
       suppressHydrationWarning
       lang="pt-BR"
       className={`font-sans ${geist.variable}`}
+      data-scroll-behavior="smooth"
     >
       <body>
         <ThemeProvider
@@ -93,12 +96,24 @@ export default function RootLayout({
                   <span className="text-primary-font">Fabio</span> Coutinho
                 </Link>
               </div>
-              <NavBar />
-              <ThemeToggle />
+              <div className="hidden md:block">
+                <NavBar />
+              </div>
+              <div className="md:hidden">
+                <NavBarMobile />
+              </div>
+              <div className="hidden md:block">
+                <ThemeToggle />
+              </div>
             </div>
           </header>
           <main className="pt-16">
-            <TooltipProvider>{children}</TooltipProvider>
+            <TooltipProvider>
+              <ScrollSmoother />
+              <div id="smooth-wrapper">
+                <div id="smooth-content">{children}</div>
+              </div>
+            </TooltipProvider>
           </main>
         </ThemeProvider>
         <script
