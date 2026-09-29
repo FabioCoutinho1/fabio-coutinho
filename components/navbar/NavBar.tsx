@@ -1,25 +1,11 @@
 "use client";
 
-import { ScrollSmoother } from "gsap/ScrollSmoother";
+import handleScrollPath from "@/lib/scrollsmoothe";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function NavBar() {
   const pathname = usePathname();
-
-  function handleScroll(to: string): void {
-    ScrollSmoother.get()?.scrollTo(to, true);
-  }
-
-  function handleScrollPath(
-    e: React.MouseEvent<HTMLAnchorElement>,
-    section: string,
-  ): void {
-    if (pathname === "/") {
-      e.preventDefault();
-      handleScroll(section);
-    }
-  }
 
   return (
     <nav
@@ -32,7 +18,7 @@ export default function NavBar() {
             className="transition-colors hover:text-primary-font"
             href="/#hero"
             onClick={(e) => {
-              handleScrollPath(e, "#hero");
+              handleScrollPath(e, "#hero", pathname);
             }}
           >
             Início
@@ -43,7 +29,7 @@ export default function NavBar() {
             className="transition-colors hover:text-primary-font"
             href="/#about"
             onClick={(e) => {
-              handleScrollPath(e, "#about");
+              handleScrollPath(e, "#about", pathname);
             }}
           >
             Sobre
@@ -54,7 +40,7 @@ export default function NavBar() {
             className="transition-colors hover:text-primary-font"
             href="/#stacks"
             onClick={(e) => {
-              handleScrollPath(e, "#stacks");
+              handleScrollPath(e, "#stacks", pathname);
             }}
           >
             Habilidades
@@ -65,7 +51,7 @@ export default function NavBar() {
             className="transition-colors hover:text-primary-font"
             href="/#projects"
             onClick={(e) => {
-              handleScrollPath(e, "#projects");
+              handleScrollPath(e, "#projects", pathname);
             }}
           >
             Projetos
@@ -76,7 +62,7 @@ export default function NavBar() {
             className="transition-colors hover:text-primary-font"
             href="/#contact"
             onClick={(e) => {
-              handleScrollPath(e, "#contact");
+              handleScrollPath(e, "#contact", pathname);
             }}
           >
             Contatos

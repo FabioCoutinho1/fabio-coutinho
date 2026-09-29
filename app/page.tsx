@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Calendar, FileUser, Mail, MapPin } from "lucide-react";
 import "./globals.css";
@@ -32,8 +33,12 @@ import Stack from "@/components/stacks/Stacks";
 import Title from "@/components/typography/Title";
 import LocationAndDate from "@/components/locationAndDate/LocationAndDate";
 import Projects from "@/components/sectionProjects/Projects";
+import handleScrollPath from "@/lib/scrollsmoothe";
+import { usePathname } from "next/navigation";
 
 export default function Home() {
+  const pathname = usePathname();
+
   const mapStacks = [
     { id: 1, name: "Java", svg: svgJava, alt: "logo java" },
     { id: 2, name: "SpringBoot", svg: svgSpring, alt: "logo spring boot" },
@@ -79,14 +84,24 @@ export default function Home() {
           </p>
         </div>
         <div className="flex flex-wrap gap-4">
-          <Link href="#contact">
-            <Button className="rounded-2xl px-4 text-base">Contatos</Button>
-          </Link>
-          <Link href="#projects">
-            <Button variant="outline" className="rounded-2xl px-4 text-base">
-              Meus projetos <ArrowDown className="size-5" />
-            </Button>
-          </Link>
+          <Button
+            className="rounded-2xl px-4 text-base"
+            onClick={(e) => {
+              handleScrollPath(e, "#contact", pathname);
+            }}
+          >
+            Contatos
+          </Button>
+
+          <Button
+            variant="outline"
+            className="rounded-2xl px-4 text-base"
+            onClick={(e) => {
+              handleScrollPath(e, "#projects", pathname);
+            }}
+          >
+            Meus projetos <ArrowDown className="size-5" />
+          </Button>
         </div>
       </Section>
       <Section
