@@ -16,7 +16,6 @@ import {
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { Separator } from "../ui/separator";
 import ThemeToggle from "../theme-toggle/ThemeToggle";
 import Image from "next/image";
@@ -26,23 +25,10 @@ import githubDark from "@/app/assets/svg/githubDark.svg";
 
 import linkedIn from "@/app/assets/svg/linkedin.svg";
 import { Avatar, AvatarBadge, AvatarFallback, AvatarImage } from "../ui/avatar";
+import handleScrollPath from "@/lib/scrollsmoothe";
 
 export default function NavBarMobile() {
   const pathname = usePathname();
-
-  function handleScroll(to: string): void {
-    ScrollSmoother.get()?.scrollTo(to, true);
-  }
-
-  function handleScrollPath(
-    e: React.MouseEvent<HTMLAnchorElement>,
-    section: string,
-  ): void {
-    if (pathname === "/") {
-      e.preventDefault();
-      handleScroll(section);
-    }
-  }
 
   return (
     <Sheet>
@@ -77,7 +63,7 @@ export default function NavBarMobile() {
                     className="transition-colors hover:text-primary-font flex gap-3 items-center"
                     href="#hero"
                     onClick={(e) => {
-                      handleScrollPath(e, "#hero");
+                      handleScrollPath(e, "#hero", pathname);
                     }}
                   >
                     <Home />
@@ -91,7 +77,7 @@ export default function NavBarMobile() {
                     className="transition-colors hover:text-primary-font flex gap-3 items-center"
                     href="#about"
                     onClick={(e) => {
-                      handleScrollPath(e, "#about");
+                      handleScrollPath(e, "#about", pathname);
                     }}
                   >
                     <User />
@@ -105,7 +91,7 @@ export default function NavBarMobile() {
                     className="transition-colors hover:text-primary-font flex gap-3 items-center"
                     href="#stacks"
                     onClick={(e) => {
-                      handleScrollPath(e, "#stacks");
+                      handleScrollPath(e, "#stacks", pathname);
                     }}
                   >
                     <CodeXml />
@@ -119,7 +105,7 @@ export default function NavBarMobile() {
                     className="transition-colors hover:text-primary-font flex gap-3 items-center"
                     href="#projects"
                     onClick={(e) => {
-                      handleScrollPath(e, "#projects");
+                      handleScrollPath(e, "#projects", pathname);
                     }}
                   >
                     <Folder />
@@ -133,7 +119,7 @@ export default function NavBarMobile() {
                     className="transition-colors hover:text-primary-font flex gap-3 items-center"
                     href="#contact"
                     onClick={(e) => {
-                      handleScrollPath(e, "#contact");
+                      handleScrollPath(e, "#contact", pathname);
                     }}
                   >
                     <ContactRound />
